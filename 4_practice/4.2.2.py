@@ -9,7 +9,9 @@ class Thing:
 
 
 class DictShop(dict):
-    def __init__(self, things=dict()):
+    def __init__(self, things=None):
+        if not things:
+            things = dict()
         if not isinstance(things, dict):
             raise TypeError('аргумент должен быть словарем')
         for key in things.keys():
@@ -21,4 +23,3 @@ class DictShop(dict):
         if not isinstance(key, Thing):
             raise TypeError('ключами могут быть только объекты класса Thing')
         super().__setitem__(key, value)
-
